@@ -1,0 +1,549 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f1f5f9; /* abu-abu terang */
+    color: #1e293b;
+}
+
+/* ---------- Layout utama: sidebar + konten ---------- */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* di HP kalau kepotong address bar, ganti 100dvh */
+    width: 220px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10;
+}
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-header p {
+    margin: 0;
+    color: #0f766e; /* teal */
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.sidebar-menu {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #475569;
+}
+
+.sidebar-menu a:hover {
+    background-color: #f8fafc;
+}
+
+.sidebar-menu a.active {
+    background-color: #f0fdfa;
+    color: #0f766e;
+}
+
+.sidebar-footer {
+    padding: 16px;
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;           /* cegah konten lebar (tabel, dll.) mendorong layout */
+    margin-left: 220px;     /* HARUS sama dengan width .sidebar */
+    display: flex;
+    flex-direction: column;
+}
+
+.top-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-header h1 {
+    margin: 0;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.top-header p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.header-badge {
+    width: 56px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.page-body {
+    flex: 1;
+    padding: 32px;
+}
+
+/* ---------- Kartu (card) putih pembungkus konten ---------- */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card-header-row h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.btn-secondary {
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+.btn-primary {
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #0d9488;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0f766e;
+}
+
+.btn-danger-text {
+    color: #e11d48;
+    font-size: 12px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* ---------- Grid kartu klinik ---------- */
+.grid-klinik {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.klinik-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.klinik-item:hover {
+    border-color: #2dd4bf;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.icon-placeholder {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.klinik-item span {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ---------- Tabel jadwal ---------- */
+table.tabel-jadwal {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table.tabel-jadwal thead tr {
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+table.tabel-jadwal th {
+    padding: 8px 4px;
+    font-weight: 500;
+}
+
+table.tabel-jadwal td {
+    padding: 8px 4px;
+}
+
+table.tabel-jadwal tr.baris-ganjil {
+    background-color: rgba(255, 228, 230, 0.4); /* pink pudar */
+}
+
+table.tabel-jadwal tr.baris-genap {
+    background-color: #f8fafc;
+}
+
+.keterangan-sesi {
+    color: #94a3b8;
+}
+
+.icon-edit-btn {
+    background: none;
+    border: none;
+    color: #0d9488;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+/* ---------- Footer aksi (kembali, simpan, dll) ---------- */
+.footer-aksi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.link-kembali {
+    font-size: 14px;
+    color: #64748b;
+    text-decoration: none;
+}
+
+.link-kembali:hover {
+    text-decoration: underline;
+}
+
+.footer-aksi-kanan {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ---------- Tag/badge dokter (kasus 2 dokter dalam 1 sesi) ---------- */
+.badge-dokter {
+    display: inline-block;
+    background-color: #f0fdfa;
+    color: #0f766e;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+.kotak-contoh-khusus {
+    margin-top: 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.kotak-contoh-khusus p {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 0 0 8px;
+}
+
+/* ---------- Halaman Jadwal Praktik ---------- */
+.grid-hari {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 420px;
+}
+
+.hari-item {
+    display: block;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    text-decoration: none;
+}
+
+.hari-item:hover {
+    border-color: #2dd4bf;
+    background-color: #f0fdfa;
+}
+
+.btn-generate-hari-ini {
+    display: inline-block;
+    margin-top: 24px;
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-generate-hari-ini:hover {
+    background-color: #0f172a;
+}
+
+.btn-generate-pink {
+    background-color: #ffe4e6;
+    color: #be123c;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-generate-pink:hover {
+    background-color: #fecdd3;
+}
+
+/* Poster header teal di halaman template & generate */
+.poster-header {
+    background-color: #0f766e;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.poster-header p.subjudul {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+}
+
+.poster-header h2 {
+    margin: 4px 0;
+    font-size: 18px;
+}
+
+.poster-header p.nama-hari {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Grid kotak klinik di halaman template */
+.grid-klinik-jadwal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.klinik-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.klinik-box-header {
+    background-color: #0d9488;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+}
+
+.sesi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.sesi-row .ket-sesi {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.sesi-row .jam {
+    color: #475569;
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+/* Halaman generate: baris dropdown + jam */
+.baris-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.baris-dropdown select {
+    flex: 1;
+    font-size: 13px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.baris-dropdown .jam {
+    font-size: 13px;
+    color: #475569;
+    white-space: nowrap;
+}
+
+.nama-klinik-generate {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f766e;
+    margin: 16px 0 8px;
+}
+
+/* ---------- Halaman Data Dokter (detail & edit) ---------- */
+.info-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+.info-row.baris-ganjil {
+    background-color: rgba(255, 228, 230, 0.4);
+}
+
+.info-row.baris-genap {
+    background-color: #f8fafc;
+}
+
+.info-label {
+    width: 160px;
+    font-weight: 600;
+    color: #334155;
+    flex-shrink: 0;
+}
+
+.info-value {
+    color: #475569;
+}
+
+.info-value input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+.checkbox-klinik-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.checkbox-klinik-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+.checkbox-klinik-item input {
+    margin: 0;
+}
